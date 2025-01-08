@@ -1,9 +1,35 @@
-// on install launch notif to test
+// on install, launch notif to test
 chrome.runtime.onInstalled.addListener(() => {
 	console.log('Extension installed');
 	createReminderNotif(); // a virer, to test
 });
+// function to create the notif for congratulating on drinking a new glass
+function createDrankOneNotif() {
+	chrome.notifications.create('drank-one', {
+		type: 'basic',
+		// iconUrl: 'Ressources/icons/',
+		title: "Drank one",
+		message: "Yay, good job ! One more glass !",
+		contextMessage: "I'll remind you your next glass in an hour, see you soon !",
+  	});
+}
 
+// function to create the notif for achieving goal 
+function createGoalReachedNotif() {
+	chrome.notifications.create('goal-reached', {
+		type: 'basic',
+		// iconUrl: 'Ressources/icons/',
+		title: "Goal Reached !",
+		message: "Congrats ! You reached you goal for today !",
+		contextMessage: "What can I do for you now ?",
+		buttons: [
+			{ title: 'Keep sending me reminders for more hydratation !', iconUrl: 'Ressources/icons/' },
+			{ title: 'No more reminders for today :)', iconUrl: 'Ressources/icons/' }
+	 	]
+  	});	
+}
+
+// notif for when the "remind me in 10" is clicked
 function createBeBackNotif() {
 	chrome.notifications.create('will-be-back', {
 		type: 'basic',
@@ -13,6 +39,7 @@ function createBeBackNotif() {
   	});
 }
 
+// notif time to drink
 function createReminderNotif() {
 	chrome.notifications.create('drinking-reminder', {
 		type: 'basic',
@@ -26,27 +53,22 @@ function createReminderNotif() {
   	});
 }
 
+// function to handle the remind in 10 case (notif, timeout, and remind)
 function remindInTen() {
 	createBeBackNotif();
 	setTimeout(() => createReminderNotif(), 10000); // 10 seconds for testing
 }
 
 function addGlass() {
-	createDrankOneNotif(); // to dev
+	createDrankOneNotif();
 	// increment glass counter
 	// check if goal is reached
 	// if not
 		// reset timer
 	// if reached {
-		// create congrats notif
-	createGoalReachedNotif(); // to dev
-		// ask if 
-			// -> update goal
-			// OR
-			// -> keep notifications on every hour
-			// OR
-			// -> stay silent (but keep the possibility to add a glass by clicking the pop up)
-		// }
+		createGoalReachedNotif(); // ask if : keep notifications on every hour, OR stay silent (but keep the possibility to add a glass by clicking the pop up)
+	// }
+	// save the updated number of glasses in local storage ??
 }
 
 // button handler
@@ -66,6 +88,10 @@ chrome.notifications.onButtonClicked.addListener((notificationId, buttonIndex) =
 
 /* NOTES
 
-possible to add a callback function after the clear notif to automatically relaunch the timer, add a glass, show another notif
+possible to add a callback function after clearing notif to automatically relaunch the timer, add a glass, show another notif
+
+- how much time do the notifs stay ? how to adjust that ?
+- handle click on notif / closing notif without clicking the buttons
+- 
 
 */
