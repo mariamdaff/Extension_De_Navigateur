@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 300px;
+  height: auto;
+  background-color: #dde8fc;
+  font-family: Arial, sans-serif;
+}
+
+#popupContainer {
+  text-align: left;
+  background-color: #dde8fc;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#popupContainer h1 {
+  font-size: 20px;
+  color: #3780f4;
+  margin-bottom: 10px;
+}
+
+#counterMessage,
+#endMessage {
+  font-size: 14px;
+  color: #333;
+}
+
+.highlight {
+  font-size: 16px;
+  font-weight: bold;
+  color: #3780f4;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  align-self: flex-end;
+  font-size: 14px;
+  color: #fff;
+  background-color: #3780f4;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #244fb2;
+}
