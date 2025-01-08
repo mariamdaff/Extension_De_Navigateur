@@ -16,7 +16,7 @@
   ],
   "background": {
 	  "service_worker": "Notifications/notifs.js"
-	}
+	},
   "action": {
     "default_popup": "popup.html",
     "default_icon": "drink.png"
