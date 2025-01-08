@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Tracker hydratation",
+  "version": "1.0",
+  "description": "Extension pour suivre votre hydratation quotidienne.",
+  "permissions": [
+    "storage",             
+    "notifications",       
+    "alarms"               
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "img_1.png"
+  },
+  
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+  {
+    "matches": ["<all_urls>"],
+    "js": ["content.js"]
+  }]
+}
