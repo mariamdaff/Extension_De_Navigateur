@@ -14,5 +14,13 @@
   "action": {
     "default_popup": "popup.html",
     "default_icon": "drink.png"
+  },
+
+  "icons": {
+    "24": "icons/drink-icon-24.png",
+    "64": "icons/drink-icon-64.png",
+    "128": "icons/drink-icon-128.png",
+    "256": "icons/drink-icon-256.png",
+    "512": "icons/drink-icon-512.png"
   }
 }
