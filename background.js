@@ -1,14 +1,39 @@
-// import { parse } from 'node-html-parser';
-//const countGlass = require('./popup.js');
-import countGlass from "./popup.js";
-// on install, launch notif to test
+import { incrementGlassCount } from "./storage.js";
+
 chrome.runtime.onInstalled.addListener(() => {
-  console.log("Extension installed 2");
+  console.log("Extension installed");
   // createReminderNotif(); // a virer, to test
 });
+
+// fonction pour ajouter un verre et gérer les notifs
+function addGlass() {
+  incrementGlassCount((nouveauCompte) => {
+    console.log(`Nouveau compteur : ${nouveauCompte}`);
+    if (nouveauCompte === 8) {
+      createGoalReachedNotif();
+    } else {
+      createDrankOneNotif();
+    }
+  });
+}
+
+// function addGlass() {
+//   createDrankOneNotif();
+//   // increment glass counter
+//   // check if goal is reached
+//   // if not
+//   // reset timer
+//   // if reached {
+//   if (nouveauCompte > 8) {
+//     createGoalReachedNotif(); // ask if : keep notifications on every hour, OR stay silent (but keep the possibility to add a glass by clicking the pop up)
+//     // }
+//     // save the updated number of glasses in local storage ??
+//   }
+// }
+
 // function to create the notif for congratulating on drinking a new glass
 function createDrankOneNotif() {
-  chrome.notifications.create("", {
+  chrome.notifications.create("drank-one", {
     type: "basic",
     // iconUrl: 'Ressources/icons/',
     title: "Drank one",
@@ -20,7 +45,7 @@ function createDrankOneNotif() {
 
 // function to create the notif for achieving goal
 function createGoalReachedNotif() {
-  chrome.notifications.create("", {
+  chrome.notifications.create("goal-reached", {
     type: "basic",
     // iconUrl: 'Ressources/icons/',
     title: "Goal Reached !",
@@ -41,7 +66,7 @@ function createGoalReachedNotif() {
 
 // notif for when the "remind me in 10" is clicked
 function createBeBackNotif() {
-  chrome.notifications.create("", {
+  chrome.notifications.create("will-be-back", {
     type: "basic",
     // iconUrl: 'Ressources/icons/',
     title: "I'll be back !",
@@ -51,7 +76,7 @@ function createBeBackNotif() {
 
 // notif time to drink
 function createReminderNotif() {
-  chrome.notifications.create("", {
+  chrome.notifications.create("drinking-reminder", {
     type: "basic",
     iconUrl: "Notifications/Ressources/icons/notif.png",
     title: "Time to drink water !",
@@ -75,30 +100,20 @@ function remindInTen() {
   setTimeout(() => createReminderNotif(), 10000); // 10 seconds for testing
 }
 
-function addGlass() {
-  createDrankOneNotif();
-  countGlass();   // increment glass counter
-  // check if goal is reached
-  // if not
-  // reset timer
-  // if reached {
-    if (nouveauCompte > 8) {
-  createGoalReachedNotif(); // ask if : keep notifications on every hour, OR stay silent (but keep the possibility to add a glass by clicking the pop up)
-  // }
-  // save the updated number of glasses in local storage ??
-  }
-}
-
 // button handler
 chrome.notifications.onButtonClicked.addListener(
   (notificationId, buttonIndex) => {
-    if (notificationId === "") {
+    console.log(
+      `Button clicked in notification ${notificationId} with index ${buttonIndex}`
+    );
+
+    if (notificationId === "drinking-reminder") {
       if (buttonIndex === 0) {
         console.log('User clicked "Remind me in 10!"');
-        chrome.notifications.clear("", remindInTen());
+        chrome.notifications.clear("drinking-reminder", remindInTen());
       } else if (buttonIndex === 1) {
         console.log('User clicked "Drinking now!"');
-        chrome.notifications.clear("", addGlass());
+        chrome.notifications.clear("drinking-reminder", addGlass());
       }
     }
   }
