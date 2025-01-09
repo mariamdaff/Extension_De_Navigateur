@@ -35,7 +35,7 @@ function addGlass() {
 function createDrankOneNotif() {
   chrome.notifications.create("drank-one", {
     type: "basic",
-    // iconUrl: 'Ressources/icons/',
+    iconUrl: "img_1.png",
     title: "Drank one",
     message: "Yay, good job ! One more glass !",
     contextMessage:
@@ -47,18 +47,18 @@ function createDrankOneNotif() {
 function createGoalReachedNotif() {
   chrome.notifications.create("goal-reached", {
     type: "basic",
-    // iconUrl: 'Ressources/icons/',
+    iconUrl: "img_1.png",
     title: "Goal Reached !",
     message: "Congrats ! You reached you goal for today !",
     contextMessage: "What can I do for you now ?",
     buttons: [
       {
         title: "Keep sending me reminders for more hydratation !",
-        iconUrl: "Notifications/Ressources/icons/",
+        iconUrl: "img_1.png"
       },
       {
         title: "No more reminders for today :)",
-        iconUrl: "Notifications/Ressources/icons/",
+        iconUrl: "img_1.png"
       },
     ],
   });
@@ -68,7 +68,7 @@ function createGoalReachedNotif() {
 function createBeBackNotif() {
   chrome.notifications.create("will-be-back", {
     type: "basic",
-    // iconUrl: 'Ressources/icons/',
+    iconUrl: "img_1.png",
     title: "I'll be back !",
     message: "Roger that, I'll remind you to drink in 10 minutes. See you !",
   });
