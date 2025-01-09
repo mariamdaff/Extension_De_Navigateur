@@ -1,3 +1,6 @@
+// import { parse } from 'node-html-parser';
+//const countGlass = require('./popup.js');
+import countGlass from "./popup.js";
 // on install, launch notif to test
 chrome.runtime.onInstalled.addListener(() => {
   console.log("Extension installed 2");
@@ -74,14 +77,16 @@ function remindInTen() {
 
 function addGlass() {
   createDrankOneNotif();
-  // increment glass counter
+  countGlass();   // increment glass counter
   // check if goal is reached
   // if not
   // reset timer
   // if reached {
+    if (nouveauCompte > 8) {
   createGoalReachedNotif(); // ask if : keep notifications on every hour, OR stay silent (but keep the possibility to add a glass by clicking the pop up)
   // }
   // save the updated number of glasses in local storage ??
+  }
 }
 
 // button handler
