@@ -9,7 +9,7 @@ export function incrementGlassCount(callback) {
     if (nouveauCompte > 8) {
       nouveauCompte = 0;
     }
-    chrome.storage.local.set({ compteur: nouveauCompte }, () => {
+    chrome.storage.local.set({ ["compteur"]: nouveauCompte }, () => {
       callback(nouveauCompte);
     });
   });

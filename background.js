@@ -31,8 +31,10 @@ export async function addGlass() {
   });
   if (glassCount + 1 === 8) {
     createGoalReachedNotif();
+    setTimeout(chrome.notifications.clear("goal-reached"), 2000)
   } else {
     createDrankOneNotif();
+    chrome.notifications.clear("drank-one")
   }
   startTimer(30000);
 }
