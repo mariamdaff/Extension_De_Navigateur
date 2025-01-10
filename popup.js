@@ -1,46 +1,21 @@
-//module.exports = countGlass;
-
 import { getGlassCount, incrementGlassCount } from "./storage.js";
+import { addGlass } from "./background.js";
 
 const compteurVerre = document.getElementById("counter");
 const boutonAjouter = document.getElementById("ajouter-un-verre");
 
-// charger le compteur initial depuis le stockage
-getGlassCount((compteur) => {
-  compteurVerre.textContent = `${compteur} verres d’eau`;
-});
+// affichage du nombre de verres
+function updateGlassCountDisplay() {
+	getGlassCount((compteur) => {
+		compteurVerre.textContent = `${compteur} verres d’eau`;
+	});
+}
 
 // ajouter un verre quand on clique sur le bouton
 boutonAjouter.addEventListener("click", () => {
-  incrementGlassCount((nouveauCompte) => {
-    compteurVerre.textContent = `${nouveauCompte} verres d’eau`;
-  });
+	addGlass();
+	updateGlassCountDisplay();
 });
 
-// const compteurVerre = document.getElementById("counter");
-// const boutonAjouter = document.getElementById("ajouter-un-verre");
-
-// chrome.storage.local.get(["compteur"], (resultat) => {
-//   let compteur = resultat.compteur || 0;
-//   compteurVerre.textContent = `${compteur} verres d’eau`;
-// });
-// export function countGlass() {
-//   chrome.storage.local.get(["compteur"], (resultat) => {
-//     let nouveauCompte = (resultat.compteur || 0) + 1;
-//     if (nouveauCompte > 8) {
-//       nouveauCompte = 0;
-//     }
-
-//     chrome.storage.local.set({ compteur: nouveauCompte }, () => {
-//       compteurVerre.textContent = `${nouveauCompte} verres d’eau`;
-//     });
-//   });
-// }
-// boutonAjouter.addEventListener("click", countGlass);
-
-// MANIFEST COMMENTS
-//   "content_scripts": [
-//   {
-//     "matches": ["<all_urls>"],
-//     "js": ["content.js"]
-//   }],
+// affichage du nombre de verres initial
+updateGlassCountDisplay();
