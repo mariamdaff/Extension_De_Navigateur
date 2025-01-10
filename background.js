@@ -2,7 +2,7 @@ import { incrementGlassCount } from "./storage.js";
 
 chrome.runtime.onInstalled.addListener(() => {
   console.log("Extension installed");
-  // createReminderNotif(); // a virer, to test
+  createReminderNotif(); // a virer, to test
 });
 
 // fonction pour ajouter un verre et gérer les notifs
@@ -16,20 +16,6 @@ function addGlass() {
     }
   });
 }
-
-// function addGlass() {
-//   createDrankOneNotif();
-//   // increment glass counter
-//   // check if goal is reached
-//   // if not
-//   // reset timer
-//   // if reached {
-//   if (nouveauCompte > 8) {
-//     createGoalReachedNotif(); // ask if : keep notifications on every hour, OR stay silent (but keep the possibility to add a glass by clicking the pop up)
-//     // }
-//     // save the updated number of glasses in local storage ??
-//   }
-// }
 
 // function to create the notif for congratulating on drinking a new glass
 function createDrankOneNotif() {
@@ -106,18 +92,18 @@ chrome.notifications.onButtonClicked.addListener(
     console.log(
       `Button clicked in notification ${notificationId} with index ${buttonIndex}`
     );
-
     if (notificationId === "drinking-reminder") {
       if (buttonIndex === 0) {
-        console.log('User clicked "Remind me in 10!"');
         chrome.notifications.clear("drinking-reminder", remindInTen());
       } else if (buttonIndex === 1) {
-        console.log('User clicked "Drinking now!"');
         chrome.notifications.clear("drinking-reminder", addGlass());
       }
     }
   }
 );
+
+//fonction qui lance un timer
+let timerId = setInterval(() => createReminderNotif(), 10000);
 
 /* NOTES
 
@@ -128,6 +114,3 @@ possible to add a callback function after clearing notif to automatically relaun
 - 
 
 */
-
-//fonction qui lance un timer
-let timerId = setInterval(() => createReminderNotif(), 10000);
