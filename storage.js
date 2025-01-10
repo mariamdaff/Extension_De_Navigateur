@@ -1,7 +1,6 @@
-export function getGlassCount(callback) {
-  chrome.storage.local.get(["compteur"], (resultat) => {
-    callback(resultat.compteur || 0);
-  });
+export async function getGlassCount(callback) {
+  let glassCount = await chrome.storage.local.get(["compteur"])
+  return glassCount.compteur
 }
 
 export function incrementGlassCount(callback) {

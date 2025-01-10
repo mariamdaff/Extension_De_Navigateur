@@ -3,16 +3,16 @@ import { getGlassCount, incrementGlassCount } from "./storage.js";
 let timerId;
 
 function startTimer(timeToSet) {
-	if (timerId) {
-		console.log("in if in start timer");
-        clearInterval(timerId); // clear any old timer so only one is running at a time
-	}
-	console.log("in startTimer, timerID = " + timerId);
-    timerId = setInterval(() => {
-        console.log(`timer ${timerId} has been set for 30 seconds.`);
-		createReminderNotif();
-    }, timeToSet);
-	console.log("in start timer, time so set = " + timeToSet);
+  if (timerId) {
+    console.log("in if in start timer");
+    clearInterval(timerId); // clear any old timer so only one is running at a time
+  }
+  console.log("in startTimer, timerID = " + timerId);
+  timerId = setInterval(() => {
+    console.log(`timer ${timerId} has been set for 30 seconds.`);
+    createReminderNotif();
+  }, timeToSet);
+  console.log("in start timer, time so set = " + timeToSet);
 }
 
 chrome.runtime.onInstalled.addListener(() => {
@@ -23,17 +23,18 @@ chrome.runtime.onInstalled.addListener(() => {
 // une alerte qui explique comment fonctionne l'extension ?
 
 // fonction pour ajouter un verre et gérer les notifs
-export function addGlass() {
-	let glassCount = getGlassCount();
-  	incrementGlassCount((nouveauCompte) => {
-    	console.log(`IN ADD GLASS - Nouveau compteur : ${nouveauCompte}`);
-	});
-    if ((glassCount + 1) === 8) {
-    	createGoalReachedNotif();
-    } else {
-    	createDrankOneNotif();
-    }
-	startTimer(30000);
+export async function addGlass() {
+  let glassCount = await getGlassCount();
+  console.log(glassCount)
+  incrementGlassCount((nouveauCompte) => {
+    console.log(`IN ADD GLASS - Nouveau compteur : ${nouveauCompte}`);
+  });
+  if (glassCount + 1 === 8) {
+    createGoalReachedNotif();
+  } else {
+    createDrankOneNotif();
+  }
+  startTimer(30000);
 }
 
 // function to create the notif for congratulating on drinking a new glass
@@ -59,11 +60,11 @@ function createGoalReachedNotif() {
     buttons: [
       {
         title: "Keep sending me reminders for more hydratation !",
-        iconUrl: "icons/img_1.png"
+        iconUrl: "icons/img_1.png",
       },
       {
         title: "No more reminders for today :)",
-        iconUrl: "icons/img_1.png"
+        iconUrl: "icons/img_1.png",
       },
     ],
   });
