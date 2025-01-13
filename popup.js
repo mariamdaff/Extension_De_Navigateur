@@ -1,26 +1,35 @@
-const compteurVerre = document.getElementById('counter');
-const boutonAjouter = document.getElementById('ajouter-un-verre');
+import { getGlassCount, incrementGlassCount } from "./storage.js";
+import { addGlass } from "./background.js";
 
-chrome.storage.local.get(['compteur'], (resultat) => {
-	let compteur = resultat.compteur || 0;
-	compteurVerre.textContent = `${compteur} verres d’eau`;
+const compteurVerre = document.getElementById("counter");
+const boutonAjouter = document.getElementById("ajouter-un-verre");
+
+// affichage du nombre de verres
+async function updateGlassCountDisplay() {
+  const compteur = await getGlassCount();
+  compteurVerre.textContent = `${compteur} verres d’eau`;
+}
+
+// ajouter un verre quand on clique sur le bouton
+boutonAjouter.addEventListener("click", async () => {
+  await addGlass();
+  await updateGlassCountDisplay();
 });
 
-boutonAjouter.addEventListener('click', () => {
-	chrome.storage.local.get(['compteur'], (resultat) => {
-		let nouveauCompte = (resultat.compteur || 0) + 1;
-		if (nouveauCompte > 8) {
-			nouveauCompte = 0;
-		}
-		chrome.storage.local.set({ compteur: nouveauCompte }, () => {
-			compteurVerre.textContent = `${nouveauCompte} verres d’eau`;
-		});
-	});
+// ajouter un verre quand on clique sur le bouton
+boutonAjouter.addEventListener("click", async () => {
+  await addGlass();
+  await updateGlassCountDisplay();
 });
 
-// MANIFEST COMMENTS
-//   "content_scripts": [
-//   {
-//     "matches": ["<all_urls>"],
-//     "js": ["content.js"]
-//   }],
+// Initialisation
+updateGlassCountDisplay();
+
+chrome.storage.onChanged.addListener((changes, namespace) => {
+  if (changes.compteur && namespace === "local") {
+    console.log("Storage change detected:", changes.compteur.newValue);
+    compteurVerre.textContent = `${changes.compteur.newValue} verres d’eau`;
+  }
+});
+
+document.addEventListener("DOMContentLoaded", updateGlassCountDisplay);

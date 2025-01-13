@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Water Reminder</title>
+    <link rel="stylesheet" href="popup.css" />
+    <script type="module" defer src="popup.js"></script>
+  </head>
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Water Reminder</title>
-	<link rel="stylesheet" href="popup.css" />
-	<script defer src="popup.js"></script>
-</head>
-
-<body>
-	<div id="popupContainer">
-		<h1>Restez hydraté(e) aujourd'hui !</h1>
-		<br />
-		<div id="counterMessage">
-			Vous avez bu <span class="highlight" id="counter">0 verres d’eau</span> sur votre
-			objectif de <span class="highlight">8 verres</span>.
-		</div>
-		<br />
-		<div id="endMessage">Lancez-vous !</div>
-		<br />
-		<button id="ajouter-un-verre">J'ai bu 1 verre d’eau !</button>
-	</div>
-</body>
-
+  <body>
+    <div id="popupContainer">
+      <h1>Restez hydraté(e) aujourd'hui !</h1>
+      <br />
+      <div id="counterMessage">
+        Vous avez bu
+        <span class="highlight" id="counter">0 verres d’eau</span> sur votre
+        objectif de <span class="highlight">8 verres</span>.
+      </div>
+      <br />
+      <div id="endMessage">Lancez-vous !</div>
+      <br />
+      <button id="ajouter-un-verre">J'ai bu 1 verre d’eau !</button>
+    </div>
+  </body>
 </html>
