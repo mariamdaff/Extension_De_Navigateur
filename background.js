@@ -18,7 +18,31 @@ function createNotification(id, options) {
 	});
 }
 
+
 // notifications
+=======
+chrome.runtime.onInstalled.addListener(() => {
+  console.log("Extension installed");
+  startTimer(30000);
+});
+// lancer l'ouverture du pop-up ?
+// une alerte qui explique comment fonctionne l'extension ?
+
+// fonction pour ajouter un verre et gérer les notifs
+export async function addGlass() {
+  await incrementGlassCount(async (nouveauCompte) => {
+    console.log(`IN ADD GLASS - Nouveau compteur : ${nouveauCompte}`);
+    if (nouveauCompte === 8) {
+      createGoalReachedNotif();
+    } else {
+      createDrankOneNotif();
+    }
+  });
+  startTimer(30000);
+}
+
+// function to create the notif for congratulating on drinking a new glass
+
 function createDrankOneNotif() {
 	createNotification("drank_one", {
 		type: "basic",

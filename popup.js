@@ -5,6 +5,7 @@ const glassCounter = document.getElementById("counter");
 const addGlassButton = document.getElementById("add-glass");
 
 // fonction générale pour update l'affichage
+
 async function updateGlassCountDisplay() {
 	const count = await getGlassCount();
 	glassCounter.textContent = `${count} verres d’eau`;
