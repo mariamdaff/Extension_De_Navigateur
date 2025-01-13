@@ -29,3 +29,5 @@ possible to add a callback function after clearing notif to automatically relaun
 
 - how much time do the notifs stay ? how to adjust that ?
 - handle click on notif / closing notif without clicking the buttons
+
+// reset test
