@@ -22,19 +22,16 @@ chrome.runtime.onInstalled.addListener(() => {
 // lancer l'ouverture du pop-up ?
 // une alerte qui explique comment fonctionne l'extension ?
 
-// fonction pour ajouter un verre et gérer les notifs
 export async function addGlass() {
-  let glassCount = await getGlassCount();
-  console.log(glassCount);
-  incrementGlassCount((nouveauCompte) => {
-    console.log(`IN ADD GLASS - Nouveau compteur : ${nouveauCompte}`);
-  });
-  if (glassCount + 1 === 8) {
-    createGoalReachedNotif();
-  } else {
-    createDrankOneNotif();
-  }
-  startTimer(30000);
+	await incrementGlassCount(async (nouveauCompte) => {
+		console.log(`IN ADD GLASS - Nouveau compteur : ${nouveauCompte}`);
+		if (nouveauCompte === 8) {
+			createGoalReachedNotif();
+		} else {
+			createDrankOneNotif();
+		}
+	});
+	startTimer(30000);
 }
 
 // function to create the notif for congratulating on drinking a new glass
