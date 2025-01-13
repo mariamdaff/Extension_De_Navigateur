@@ -24,16 +24,14 @@ chrome.runtime.onInstalled.addListener(() => {
 
 // fonction pour ajouter un verre et gérer les notifs
 export async function addGlass() {
-  let glassCount = await getGlassCount();
-  console.log(glassCount);
-  incrementGlassCount((nouveauCompte) => {
+  await incrementGlassCount(async (nouveauCompte) => {
     console.log(`IN ADD GLASS - Nouveau compteur : ${nouveauCompte}`);
+    if (nouveauCompte === 8) {
+      createGoalReachedNotif();
+    } else {
+      createDrankOneNotif();
+    }
   });
-  if (glassCount + 1 === 8) {
-    createGoalReachedNotif();
-  } else {
-    createDrankOneNotif();
-  }
   startTimer(30000);
 }
 
