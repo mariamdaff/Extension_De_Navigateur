@@ -74,6 +74,19 @@ export async function addGlass() {
 	startTimer(60000);
 }
 
+// // fonction pour ajouter un verre et gérer les notifs
+// export async function addGlass() {
+//   await incrementGlassCount(async (nouveauCompte) => {
+//     console.log(`IN ADD GLASS - Nouveau compteur : ${nouveauCompte}`);
+//     if (nouveauCompte === 8) {
+//       createGoalReachedNotif();
+//     } else {
+//       createDrankOneNotif();
+//     }
+//   });
+//   startTimer(30000);
+// }
+
 // gère les clics de bouton dans la notif reminder
 chrome.notifications.onButtonClicked.addListener((id, index) => {
 	if (id === "drinking_reminder") {

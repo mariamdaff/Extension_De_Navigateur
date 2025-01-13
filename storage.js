@@ -4,6 +4,13 @@ export async function getGlassCount() {
 	return result.compteur || 0;
 }
 
+// export function getGlassCount() {
+//   return new Promise((resolve) => {
+//     chrome.storage.local.get(["compteur"], (result) => {
+//       resolve(result.compteur || 0);
+//     });
+//   });
+
 // récupère le nombre de verres, vérifie si l'objectif est atteint
 // mets à jour ce nombre dans le storage et retourne la nouvelle valeur
 export async function incrementGlassCount() {

@@ -13,7 +13,6 @@ async function updateGlassCountDisplay() {
 // Gère l'ajout d'un verre après un clic sur le bouton du popup
 addGlassButton.addEventListener("click", async () => {
 	await addGlass();
-	console.log("in add glass button");
 	await updateGlassCountDisplay();
 });
 
@@ -25,6 +24,14 @@ document.addEventListener("DOMContentLoaded", updateGlassCountDisplay);
 chrome.storage.onChanged.addListener((changes, namespace) => {
 	if (changes.compteur && namespace === "local") {
 		const newValue = changes.compteur.newValue || 0;
+    console.log("Storage change detected:", changes.compteur.newValue);
 		glassCounter.textContent = `${newValue} verres d’eau`;
 	}
 });
+
+// chrome.storage.onChanged.addListener((changes, namespace) => {
+//   if (changes.compteur && namespace === "local") {
+//     console.log("Storage change detected:", changes.compteur.newValue);
+//     compteurVerre.textContent = `${changes.compteur.newValue} verres d’eau`;
+//   }
+// });
