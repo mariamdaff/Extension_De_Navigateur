@@ -1,0 +1,31 @@
+CE QUI FONCTIONNE :
+- counter dans le popup
+- counter update par les notifs
+- notifs (drank one, reminder, goalreached)
+
+BUGS : 
+
+- gérer quand le goal est reached : là il faut appuyer sur "j'ai bu 
+un verre" dans le popup pour remettre le compteur à 0, les boutons de
+la notif goalreached ne font rien, et du coup quand on appuie sur
+le bouton, il y a bien la notif goalreached mets le compteur se remet
+juste à 0.
+- gérer tous les cas possibles dans les notifs : fermée sans cliquer sur 
+un bouton, cliquer ailleurs pour la fermer
+
+A AJOUTER : 
+- réglage objectif
+- réglage temps notif
+- page d'accueil qui s'ouvre à l'installe pour les réglages
+- quand une nouvelle page est ouverte, afficher le counter de verres, le
+timer et des infos santé/nutrition (avec par ex : HealthFact API)
+- modification des pages (content.js) avec une animation dessus ou le texte
+qui devient bleu quand il est l'heure de boire
+
+
+NOTES : 
+
+possible to add a callback function after clearing notif to automatically relaunch the timer, add a glass, show another notif
+
+- how much time do the notifs stay ? how to adjust that ?
+- handle click on notif / closing notif without clicking the buttons
