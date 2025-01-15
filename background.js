@@ -63,11 +63,35 @@ function createReminderNotif() {
   });
 }
 
+// Background Script
+function sendMessageToTabs(tabs) {
+	for (const tab of tabs) {
+		chrome.tabs.sendMessage(tab.id, { action: "changeColor" })
+		.then((response) => {
+		  console.log("Message from the content script:");
+		  console.log(response.response);
+		})
+		.catch((error) => {
+		  console.error(`Error: ${error}`);
+		});
+	}
+}
+
+function handleTimeToDrink() {
+	createReminderNotif();
+	chrome.tabs.query({ currentWindow: true, active: true })
+    .then(sendMessageToTabs)
+    .catch((error) => {
+    	console.error(`Error: ${error}`);
+    });
+}
+
+
 // crée un timer, en supprimant au préalable le timer précédent s'il
 // existe
 function startTimer(interval) {
   if (timerId) clearInterval(timerId);
-  timerId = setInterval(createReminderNotif, interval);
+  timerId = setInterval(handleTimeToDrink, interval);
   console.log(`Timer started: ${interval}ms`);
 }
 
