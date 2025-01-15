@@ -3,7 +3,7 @@
   "name": "Drink water Extension",
   "version": "1.0.0",
   "description": "Tracker d'hydratation",
-  "permissions": ["storage", "activeTab", "notifications"],
+  "permissions": ["scripting", "storage", "activeTab", "notifications"],
   "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "background.js",
@@ -20,11 +20,5 @@
     "128": "icons/drink-icon-128.png",
     "256": "icons/drink-icon-256.png",
     "512": "icons/drink-icon-512.png"
-  },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
-    }
-  ]
+  }
 }

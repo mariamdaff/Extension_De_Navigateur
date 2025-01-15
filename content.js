@@ -1,12 +1,13 @@
-// let's go !
-
-// fonction qui récupère les éléments HTML qui sont du texte
-
-
-export function changeTextColors() {
-	textToModify = document.querySelector("body");
-	textToModify.style.color = "blue";
+// change le texte en bleu
+function changeTextColor() {
+	document.body.style.color = "blue";
 	console.log("text color modified to blue");
 }
-
-changeTextColors();
+  
+// Listen for messages from popup or background scripts
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+	if (request.action === "changeColor") {
+		changeTextColor();
+		sendResponse({ status: "success" });
+	}
+});
