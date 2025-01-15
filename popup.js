@@ -1,18 +1,20 @@
 import { getGlassCount, incrementGlassCount } from "./storage.js";
 import { addGlass } from "./background.js";
 
-const glassCounter = document.getElementById("counter");
-const addGlassButton = document.getElementById("add-glass");
-const endMessage = document.getElementById("endMessage");
+const glassCounter = document.getElementById("counter"); // Récupère l'élément pour afficher le nombre de verres
+const addGlassButton = document.getElementById("add-glass"); // Bouton pour ajouter un verre
+const endMessage = document.getElementById("endMessage"); // Récupère l'élément pour afficher le message
+const toggleRemindersButton = document.getElementById("toggle-reminders"); // Bouton pour activer/désactiver les rappels
 
-// fonction générale pour update l'affichage
+// fonction générale pour update l'affichage du nombre de verres
 async function updateGlassCountDisplay() {
-  const count = await getGlassCount();
-  glassCounter.textContent = `${count} verres d’eau`;
+  const count = await getGlassCount(); // Récupère le nombre actuel de verres
+  glassCounter.textContent = `${count} verres d’eau`; // Met à jour l'affichage
 }
 
+// Fonction pour mettre à jour le message à afficher en fonction du nombre de verres
 const updateEndMessage = async () => {
-  const glassCount = await getGlassCount();
+  const glassCount = await getGlassCount(); // récupère le nombre de verres
 
   let message = `Lancez-vous ! \u{1F4AA}`; // Valeur par défaut
   if (glassCount === 1) {
@@ -33,30 +35,49 @@ const updateEndMessage = async () => {
     message = `Bravo ! \u{1F44F}`;
   }
 
-  endMessage.textContent = message;
+  endMessage.textContent = message; //met à jour l'affichage du message
 };
 
-// Gère l'ajout d'un verre après un clic sur le bouton du popup
-// Initialisation de l'affichage
-document.addEventListener("DOMContentLoaded", async () => {
-  // Initialisation
-  await updateGlassCountDisplay();
-  await updateEndMessage();
-
-  // Gestionnaire pour le clic sur le bouton
-  addGlassButton.addEventListener("click", async () => {
-    await addGlass();
-    await updateGlassCountDisplay();
-    await updateEndMessage();
+// Fonction pour activer ou désactiver les rappels en envoyant un message à background.js
+async function toggleReminders() {
+  chrome.runtime.sendMessage({ action: "toggleNotifications" }, (response) => {
+    if (response.status === "notifications_enabled") {
+      toggleRemindersButton.textContent = "Désactiver les rappels"; // Si les rappels sont activés
+    } else if (response.status === "notifications_disabled") {
+      toggleRemindersButton.textContent = "Activer les rappels"; // Si les rappels sont désactivés
+    }
   });
+}
+
+// Au moment du chargement de la popup
+document.addEventListener("DOMContentLoaded", async () => {
+  await updateGlassCountDisplay(); // Initialisation du compteur de verres
+  await updateEndMessage(); // Met à jour le message de fin
+
+  // Récupère l'état actuel des rappels et met à jour le texte du bouton
+  const data = await chrome.storage.local.get("notificationsEnabled");
+  const notificationsActive = data.notificationsEnabled ?? true; // Par défaut activé
+  toggleRemindersButton.textContent = notificationsActive
+    ? "Désactiver les rappels"
+    : "Activer les rappels"; // Affiche le bon texte sur le bouton
+
+  // Gestionnaire pour ajouter un verre
+  addGlassButton.addEventListener("click", async () => {
+    await addGlass(); // Ajoute un verre et gère les notifications
+    await updateGlassCountDisplay(); // Met à jour l'affichage du compteur
+    await updateEndMessage(); // Met à jour le message
+  });
+
+  // Gestionnaire pour activer/désactiver les rappels
+  toggleRemindersButton.addEventListener("click", toggleReminders); // Active ou désactive les rappels
 });
 
-// pour update l'affichage à chaque fois que la valeur est modifiée
-// dans le storage
+// Surveillance des changements dans le local storage pour mettre à jour l'affichage en temps réel
 chrome.storage.onChanged.addListener((changes, namespace) => {
   if (changes.compteur && namespace === "local") {
-    const newValue = changes.compteur.newValue || 0;
-    console.log("Storage change detected:", changes.compteur.newValue);
-    glassCounter.textContent = `${newValue} verres d’eau`;
+    // Si le compteur change
+    const newValue = changes.compteur.newValue || 0; // Récupère la nouvelle valeur
+    console.log("Storage change detected:", newValue); // Log du changement
+    glassCounter.textContent = `${newValue} verres d’eau`; // Met à jour l'affichage du compteur
   }
 });
