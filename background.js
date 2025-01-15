@@ -80,7 +80,7 @@ function sendMessageToTabs(tabs) {
 // communication avec le content script
 function handleTimeToDrink() {
 	createReminderNotif();
-	chrome.tabs.query({ currentWindow: true, active: true })
+	chrome.tabs.query({ active: true })
     .then(sendMessageToTabs)
     .catch((error) => {
     	console.error(`Error: ${error}`);
