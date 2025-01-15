@@ -42,7 +42,7 @@ function createGoalReachedNotif() {
   });
 }
 
-// notification rappel avec bouton (qui ouvre le popup 
+// notification rappel avec bouton (qui ouvre le popup
 // pour ajouter un verre)
 function createReminderNotif() {
   createNotification("drinking_reminder", {
@@ -64,29 +64,30 @@ function createReminderNotif() {
 // pour changer la couleur du texte d'une page
 // web en bleu lorsque le rappel arrive
 function sendMessageToTabs(tabs) {
-	for (const tab of tabs) {
-		chrome.tabs.sendMessage(tab.id, { action: "changeColor" })
-		.then((response) => {
-		  console.log("Message from the content script:");
-		  console.log(response.response);
-		})
-		.catch((error) => {
-		  console.error(`Error: ${error}`);
-		});
-	}
+  for (const tab of tabs) {
+    chrome.tabs
+      .sendMessage(tab.id, { action: "changeColor" })
+      .then((response) => {
+        console.log("Message from the content script:");
+        console.log(response.response);
+      })
+      .catch((error) => {
+        console.error(`Error: ${error}`);
+      });
+  }
 }
 
-// gestionnaire pour la notif de rappel et la 
+// gestionnaire pour la notif de rappel et la
 // communication avec le content script
 function handleTimeToDrink() {
-	createReminderNotif();
-	chrome.tabs.query({ currentWindow: true, active: true })
+  createReminderNotif();
+  chrome.tabs
+    .query({ currentWindow: true, active: true })
     .then(sendMessageToTabs)
     .catch((error) => {
-    	console.error(`Error: ${error}`);
+      console.error(`Error: ${error}`);
     });
 }
-
 
 // crée un timer, en supprimant au préalable le timer précédent s'il
 // existe. (lance le gestionnaire pour la notif de rappel et la
@@ -95,7 +96,7 @@ function handleTimeToDrink() {
 function startTimer(interval) {
   if (!notificationsEnabled) return; // Si les notifications sont désactivées, on arrête ici
 
-  if (timerId) clearInterval(timerId); // On arrête l'ancien timer si existant
+  if (timerId) clearInterval(timerId); // On clear l'ancien timer si existant
   timerId = setInterval(handleTimeToDrink, interval); // Lance un nouveau timer
 
   console.log(`Timer started: ${interval}ms`);
@@ -118,7 +119,7 @@ export async function addGlass() {
   } else {
     createDrankOneNotif(); // Sinon, on envoie une notification pour un verre ajouté
   }
-  startTimer(20000); // Relance le timer des rappels
+  startTimer(20000); // Relance le timer de la notif rappel
 }
 
 // Gestion des clics de bouton dans la notification de rappel
