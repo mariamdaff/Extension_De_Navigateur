@@ -21,7 +21,7 @@ function createNotification(id, options) {
   });
 }
 
-// notifications
+// notification après verre bu
 function createDrankOneNotif() {
   createNotification("drank_one", {
     type: "basic",
@@ -31,6 +31,7 @@ function createDrankOneNotif() {
   });
 }
 
+// notification objectif atteint
 function createGoalReachedNotif() {
   createNotification("goal_reached", {
     type: "basic",
@@ -38,16 +39,11 @@ function createGoalReachedNotif() {
     title: "Objectif atteint !",
     message:
       "Félicitations ! Vous avez atteint votre objectif d'hydratation aujourd'hui !",
-    // buttons: [
-    //   { title: "Continuer les rappels", iconUrl: "icons/img_1.png" },
-    //   {
-    //     title: "Arrêter les rappels pour aujourd'hui",
-    //     iconUrl: "icons/img_1.png",
-    //   },
-    // ],
   });
 }
 
+// notification rappel avec bouton (qui ouvre le popup 
+// pour ajouter un verre)
 function createReminderNotif() {
   createNotification("drinking_reminder", {
     type: "basic",
@@ -64,7 +60,9 @@ function createReminderNotif() {
   });
 }
 
-// Background Script
+// function qui communique avec le content script
+// pour changer la couleur du texte d'une page
+// web en bleu lorsque le rappel arrive
 function sendMessageToTabs(tabs) {
 	for (const tab of tabs) {
 		chrome.tabs.sendMessage(tab.id, { action: "changeColor" })
@@ -78,6 +76,8 @@ function sendMessageToTabs(tabs) {
 	}
 }
 
+// gestionnaire pour la notif de rappel et la 
+// communication avec le content script
 function handleTimeToDrink() {
 	createReminderNotif();
 	chrome.tabs.query({ currentWindow: true, active: true })
@@ -89,7 +89,9 @@ function handleTimeToDrink() {
 
 
 // crée un timer, en supprimant au préalable le timer précédent s'il
-// existe
+// existe. (lance le gestionnaire pour la notif de rappel et la
+// communication avec le content script)
+// ne fais rien si les notifications sont désactivées (via le bouton popup)
 function startTimer(interval) {
   if (!notificationsEnabled) return; // Si les notifications sont désactivées, on arrête ici
 
