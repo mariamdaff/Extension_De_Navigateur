@@ -1,4 +1,5 @@
 import { incrementGlassCount } from "./storage.js";
+import { changeTextColors } from "./content.js";
 
 let timerId = null;
 
@@ -60,11 +61,16 @@ function createReminderNotif() {
   });
 }
 
+function handleTimeToDrink() {
+	createReminderNotif();
+	changeTextColors();
+}
+
 // crée un timer, en supprimant au préalable le timer précédent s'il
 // existe
 function startTimer(interval) {
   if (timerId) clearInterval(timerId);
-  timerId = setInterval(createReminderNotif, interval);
+  timerId = setInterval(handleTimeToDrink(), interval);
   console.log(`Timer started: ${interval}ms`);
 }
 
