@@ -8,7 +8,7 @@ export async function getGlassCount() {
 // mets à jour ce nombre dans le local storage et retourne la nouvelle valeur
 export async function incrementGlassCount() {
   const count = await getGlassCount(); // Récupère le nombre actuel de verres
-  const newCount = count + 1; // Si l'objectif est atteint (8 verres), on recommence à 1
+  const newCount = count + 1; // on incrémente
   await chrome.storage.local.set({ compteur: newCount }); // Sauvegarde le nouveau nombre de verres
   return newCount; // Retourne la nouvelle valeur
 }
