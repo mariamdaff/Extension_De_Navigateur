@@ -94,7 +94,7 @@ function startTimer(interval) {
   if (!notificationsEnabled) return; // Si les notifications sont désactivées, on arrête ici
 
   if (timerId) clearInterval(timerId); // On arrête l'ancien timer si existant
-  timerId = setInterval(createReminderNotif, interval); // Lance un nouveau timer
+  timerId = setInterval(handleTimeToDrink, interval); // Lance un nouveau timer
 
   console.log(`Timer started: ${interval}ms`);
 }
