@@ -31,8 +31,10 @@ const updateEndMessage = async () => {
     message = `Dernière ligne droite ! \u{1F680}`;
   } else if (glassCount === 7) {
     message = `Vous y êtes presque ! \u{1F979}`;
-  } else if (glassCount >= 8) {
+  } else if (glassCount === 8) {
     message = `Bravo ! \u{1F44F}`;
+  } else if (glassCount >= 9) {
+    message = `Sky is the limit ! \u{1F984}`;
   }
 
   endMessage.textContent = message; //met à jour l'affichage du message
