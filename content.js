@@ -1,13 +1,16 @@
-// change le texte en bleu
+// // change le texte en bleu
 function changeTextColor() {
 	document.body.style.color = "blue";
 	console.log("text color modified to blue");
+	setTimeout(() => {
+		document.body.style.color = "black";
+		console.log("text color modified to black");
+	}, 5000);
 }
-  
-// Listen for messages from popup or background scripts
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 	if (request.action === "changeColor") {
-		changeTextColor();
-		sendResponse({ status: "success" });
+	  changeTextColor();
+	  sendResponse({ response: "Color changed successfully" });
 	}
 });

@@ -20,5 +20,11 @@
     "128": "icons/drink-icon-128.png",
     "256": "icons/drink-icon-256.png",
     "512": "icons/drink-icon-512.png"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
 }
