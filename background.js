@@ -25,9 +25,8 @@ function createDrankOneNotif() {
   createNotification("drank_one", {
     type: "basic",
     iconUrl: "icons/img_1.png",
-    title: "Drank one!",
-    message: "Yay, good job! One more glass!",
-    contextMessage: "I'll remind you of your next glass soon!",
+    title: "Bravo, un verre de plus !",
+    message: "Je vous rappellerai pour le prochain verre bientôt !",
   });
 }
 
@@ -35,12 +34,16 @@ function createGoalReachedNotif() {
   createNotification("goal_reached", {
     type: "basic",
     iconUrl: "icons/img_1.png",
-    title: "Goal Reached!",
-    message: "Congrats! You've reached your hydration goal today!",
-    buttons: [
-      { title: "Keep reminders coming!", iconUrl: "icons/img_1.png" },
-      { title: "No more reminders today", iconUrl: "icons/img_1.png" },
-    ],
+    title: "Objectif atteint !",
+    message:
+      "Félicitations ! Vous avez atteint votre objectif d'hydratation aujourd'hui !",
+    // buttons: [
+    //   { title: "Continuer les rappels", iconUrl: "icons/img_1.png" },
+    //   {
+    //     title: "Arrêter les rappels pour aujourd'hui",
+    //     iconUrl: "icons/img_1.png",
+    //   },
+    // ],
   });
 }
 
@@ -48,14 +51,14 @@ function createReminderNotif() {
   createNotification("drinking_reminder", {
     type: "basic",
     iconUrl: "icons/notif.png",
-    title: "Time to drink water!",
-    message: "It's time for your next glass!",
+    title: "Il est l'heure de boire de l'eau !",
+    message: "N'oubliez pas de boire votre prochain verre !",
     buttons: [
       {
-        title: "Remind me in 10 minutes",
+        title: "Rappeler dans 10 minutes",
         iconUrl: "icons/time-forward-10.png",
       },
-      { title: "Add a glass of water!", iconUrl: "icons/water-glass.png" },
+      { title: "Ajouter un verre d'eau", iconUrl: "icons/water-glass.png" },
     ],
   });
 }
