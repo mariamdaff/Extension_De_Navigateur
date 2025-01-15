@@ -1,0 +1,23 @@
+/* <body>
+	<h1>testetsttes</h1>
+	<p id="testcolor">lalala</p>
+	<button type="button">click this there</button>
+	<h2>okay <span id="teststyle2"> this is weird </span> </h2>
+	<p id="teststyle"> i'm thinking of stuffs </p>
+	<span> yolo <p> heyhey </p> </span>
+</body>
+</html> */
+
+#testcolor {
+	color:red;
+}
+
+#teststyle {
+	font-weight: bold;
+}
+
+#teststyle2 {
+	font-size: medium;
+	color:chartreuse;
+	font-style: italic;
+}
