@@ -23,11 +23,12 @@ document.addEventListener("DOMContentLoaded", updateGlassCountDisplay);
 // dans le storage
 chrome.storage.onChanged.addListener((changes, namespace) => {
 	if (changes.compteur && namespace === "local") {
-		const newValue = changes.compteur.newValue || 0;
+		const newValue = changes.compteur.newValue || 1;
     console.log("Storage change detected:", changes.compteur.newValue);
 		glassCounter.textContent = `${newValue} verres d’eau`;
 	}
 });
+
 
 // chrome.storage.onChanged.addListener((changes, namespace) => {
 //   if (changes.compteur && namespace === "local") {
