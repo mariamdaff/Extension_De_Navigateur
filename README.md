@@ -11,8 +11,10 @@ THEME de l'EXTENSION CHOISI et OBJECTIFS:
   *Traqueur d’hydratation journalier
   
   *Solution complète pour aider les utilisateurs à maintenir une hydratation adéquate, en fournissant des rappels réguliers, un suivi précis et des encouragements personnalisés.
+  
 
 ORGANISATION de TRAVAIL et OUTILS:
+
 *Selon la répartition des tâches, en Mob/Pair/Split Programming
 
   *Outils utilisés :
@@ -24,6 +26,7 @@ ORGANISATION de TRAVAIL et OUTILS:
     - VSCode
     
     - Figma pour la maquette
+    
 
 MVP : FONCTIONNALITES et OBJECTIFS dans le CADRE du PROJET:
 
@@ -47,6 +50,7 @@ MVP : FONCTIONNALITES et OBJECTIFS dans le CADRE du PROJET:
     -  Stockage des données : L'extension utilise le stockage local de Chrome pour conserver le nombre de verres consommés, assurant ainsi la persistance des données même après la fermeture du navigateur.
     
     -  Modification de la couleur de la page active: Le texte de la page web active se modifie en couleur bleu a chaque apparition de la notification de rappel puis disparait au bout de 5 secondes.
+    
 
 VERSION 2: OBJECTIFS et FONCTIONNALITES pour une version 2 du projet (en cours de réalisation):
 
