@@ -1,21 +1,21 @@
-Gestion et spécificités du projet
+GESTION et SPECIFITES du PROJET
 
-Nombre de collaborateurs pour le projet collectif : 4
-Temps de conception et démonstration: 2 semaines
+NOMBRE DE COLLABORATEURS pour le projet collectif : 4
+TEMPS de conception et démonstration: 2 semaines
 
-Thème de l’extension choisi et objectif: 
+THEME de l'EXTENSION CHOISI et OBJECTIFS:
   *Traqueur d’hydratation journalier
   *Solution complète pour aider les utilisateurs à maintenir une hydratation adéquate, en fournissant des rappels réguliers, un suivi précis et des encouragements personnalisés.
 
-Organisation de travail et outils utilisés: 
-  *Selon la répartition des tâches, en Mob/Pair/Split Programming
+ORGANISATION de TRAVAIL et OUTILS:
+*Selon la répartition des tâches, en Mob/Pair/Split Programming
   *Outils utilisés :
     - Miro : Brainwriting/Kanban/Retroplanning/Plannification demo/Retrospective Speed Boat
     - Git et Git Hub
     - VSCode
     - Figma pour la maquette
 
-MVP : Fonctionnalités séléctionnées et objectifs dans le cadre du projet: 
+MVP : FONCTIONNALITES et OBJECTIFS dans le CADRE du PROJET:
   *Objectifs:
     -  Suivi de la consommation d'eau : L'extension permet aux utilisateurs de suivre le nombre de verres d'eau consommés quotidiennement. Chaque ajout est enregistré et affiché dans la popup de l'extension.
     -  Notifications de rappel personnalisables : Des notifications régulières rappellent aux utilisateurs de boire de l'eau. Les intervalles entre les rappels peuvent être ajustés, et les notifications 
@@ -29,6 +29,6 @@ MVP : Fonctionnalités séléctionnées et objectifs dans le cadre du projet:
     -  Stockage des données : L'extension utilise le stockage local de Chrome pour conserver le nombre de verres consommés, assurant ainsi la persistance des données même après la fermeture du navigateur.
     -  Modification de la couleur de la page active: Le texte de la page web active se modifie en couleur bleu a chaque apparition de la notification de rappel puis disparait au bout de 5 secondes.
 
-  Objectifs et fonctionnalités pour une Version 2 du projet (en cours de réalisation):
+VERSION 2: OBJECTIFS et FONCTIONNALITES pour une version 2 du projet (en cours de réalisation):
     *Lancer le démarrage de l’extension à l’ouverture du navigateur Chrome (branche dateHandler)
     *Récuperer la date du jour et la comparer a la derniere date stocker dans le local storage pour reset le compteur d’eau (branche dateHandler)
