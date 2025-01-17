@@ -1,18 +1,17 @@
 GESTION et SPECIFITES du PROJET
-
-
-
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 NOMBRE DE COLLABORATEURS pour le projet collectif : 4
-
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 TEMPS de conception et démonstration: 2 semaines
-
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 THEME de l'EXTENSION CHOISI et OBJECTIFS:
 
   *Traqueur d’hydratation journalier
   
   *Solution complète pour aider les utilisateurs à maintenir une hydratation adéquate, en fournissant des rappels réguliers, un suivi précis et des encouragements personnalisés.
   
-
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ORGANISATION de TRAVAIL et OUTILS:
 
 *Selon la répartition des tâches, en Mob/Pair/Split Programming
@@ -27,7 +26,7 @@ ORGANISATION de TRAVAIL et OUTILS:
     
     - Figma pour la maquette
     
-
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 MVP : FONCTIONNALITES et OBJECTIFS dans le CADRE du PROJET:
 
   *Objectifs:
@@ -51,7 +50,7 @@ MVP : FONCTIONNALITES et OBJECTIFS dans le CADRE du PROJET:
     
     -  Modification de la couleur de la page active: Le texte de la page web active se modifie en couleur bleu a chaque apparition de la notification de rappel puis disparait au bout de 5 secondes.
     
-
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 VERSION 2: OBJECTIFS et FONCTIONNALITES pour une version 2 du projet (en cours de réalisation):
 
     *Lancer le démarrage de l’extension à l’ouverture du navigateur Chrome (branche dateHandler)
