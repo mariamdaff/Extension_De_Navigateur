@@ -6,7 +6,7 @@
 ## ⌛️ **TEMPS de conception et démonstration**: 
      2 semaines
 
-## **THEME de l'EXTENSION CHOISI et OBJECTIFS:**
+## ❓**THEME de l'EXTENSION CHOISI et OBJECTIFS:**
 
 📌 **- Traqueur d’hydratation journalier**🥛 
 
@@ -14,22 +14,22 @@
 📌 - Solution complète pour aider les utilisateurs à **maintenir une hydratation adéquate**, en fournissant des rappels réguliers, un suivi précis et des encouragements personnalisés.
   
 
-## **ORGANISATION de TRAVAIL et OUTILS:**
+## 📋**ORGANISATION de TRAVAIL et OUTILS:**
 
 ### 💻- Selon la répartition des tâches, en Mob/Pair/Split Programming
 
 ### 🔧- Outils utilisés :
   
-   - **Miro :** Brainwriting/Kanban/Retroplanning/Plannification demo/Retrospective Speed Boat
+   📌**Miro :** Brainwriting/Kanban/Retroplanning/Plannification demo/Retrospective Speed Boat
     
-   - **Git et Git Hub**
+   📌**Git et Git Hub**
     
-   - **VSCode**
+   📌**VSCode**
     
-   **- Figma** pour la maquette
+   📌**Figma** pour la maquette
     
 
-## **MVP : FONCTIONNALITES et OBJECTIFS dans le CADRE du PROJET:**
+## ✔️**MVP : FONCTIONNALITES et OBJECTIFS dans le CADRE du PROJET:**
  
  ✅ **Suivi de la consommation d'eau :** 
         L'extension permet aux utilisateurs de suivre le nombre de verres d'eau consommés quotidiennement. Chaque ajout est enregistré et affiché dans la popup de l'extension.
@@ -59,10 +59,9 @@
         Le texte de la page web active se modifie en couleur bleu a chaque apparition de la notification de rappel puis disparait au bout de 5 secondes.
     
 
-## **VERSION 2: OBJECTIFS et FONCTIONNALITES pour une version 2 du projet (en cours de réalisation):**
+## ➕**VERSION 2: OBJECTIFS et FONCTIONNALITES pour une version 2 du projet (en cours de réalisation):**
 
 📌 - **Lancer le démarrage de l’extension** à l’ouverture du navigateur Chrome (branche dateHandler)
     
 📌 - **Récuperer la date du jour** et la comparer a la derniere date stocker dans le local storage pour 
        **reset le compteur d’eau** (branche dateHandler)
-
