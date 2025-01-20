@@ -1,4 +1,10 @@
 import { incrementGlassCount } from "./storage.js";
+chrome.runtime.onStartup.addListener(() => {
+  console.log("Chrome a démarré, l'extension est active !");
+
+  // Ajoutez ici le code que vous voulez exécuter au démarrage de Chrome
+  startTimer(20000); // Exemple : démarrer un timer de 20 secondes
+});
 
 let timerId = null; // Identifiant du timer pour les rappels
 let notificationsEnabled = true; // notifications activées par défaut
