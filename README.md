@@ -65,3 +65,5 @@
     
 📌 - **Récuperer la date du jour** et la comparer a la derniere date stocker dans le local storage pour 
        **reset le compteur d’eau** (branche dateHandler)
+       
+📌 - **Repondre aux normes d'accessibilité (a11y).**
